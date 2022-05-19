@@ -1,0 +1,345 @@
+
+"Untitled - Notepad File Edit Format View Help 
+Tech:HTML<CSS<JS,B00TSTRAP Platform:NodeJS, VSCode Javascript-Browser GoogleChrome-V8 engine 2009|
+
+
+1. callback function
+2. function taking another function as a parameter
+3. SPA? single page Applicaiton --FB youtube
+
+
+DOM:
+<html>
+<head></head>
+<body>
+<p>welcome Aspire</p>
+</body>
+</html>
+
+DOM redering photocopy and update the photocopy of the dom what ever it is changed that alone will be updated, not all other will get rendered.
+
+2. REACT - VDOM -- virtual DOM
+
+
+what is REACT?
+why REACT?
+how REACT?
+
+
+React is the js library used to build UI Application 
+It dont use MVC pattern
+focus on UI
+Create by FB
+React works on component based architecture
+Reusable concept
+React is declarative
+step native application - mobile application
+
+working with REACT?
+1. npm - node package manager - is used for installing any 3rd party app in node
+2.node --local module, core module (fttsp,fs,util,os),  3rd party module(npm registry)
+
+
+To install REACT:
+1. npm install create-react-app
+2. create-react-app <app -name> -- app name cannt be in capital letter.
+3.  npx create-react-app <app-name>
+4. npm init -y
+5. public(index.html) -> src(index.js) -> root.render (take and put it) ->app.js
+
+          app.js -> is a single component.
+
+
+COMPONENT - function/class
+1.we now user function component
+2. create new file name -> src/home.js
+home.js
+function HOME(){
+return (
+<div>
+<h1>name this as home file</h1>
+</div>
+)
+
+}
+
+
+============================================================
+26-APR-2022
+components
+1.functional components -> stateless components
+2.class components -> stateful components
+
+
+FUNCTIONAL
+===========
+*)  JSX
+function welcome(props){
+return (<h1>welcome</h1>);
+}
+
+*) compiler -> bable is the complier which helps to convert jsx to normal javascript code
+
+*)in this we user ES6 -> js2015 Egma standard script
+                          () = >
+
+CLASS(ES6)
+==========
+import {React,component} from 'react';
+class Greet extend component {
+     render(){
+      return (<h1>geeks</h1>)
+}
+}
+
+
+============================================================
+27-APR-2022
+stateful cuntion  in comp
+routing
+Hoc component 
+
+
+1.condition redering:rendering ->taking value from the component
+2.List rendering
+
+    keys -> Keys help React identify which items have changed, are added, or are removed. 
+    Keys should be given to the elements inside the array to give the elements a stable identity.
+
+3. React router
+    react-router  -> common for both dome and
+    react-router-dom -> for web application
+    react-router-native -> for mobile application
+
+npm install react-router-dom
+Router, Route, Routes, Link
+
+diff types of Router:
+    BrowserRouter
+    NativeRouter -> (native means user for mobile applicaiton)
+    MemoryRouter
+    HashRouter
+    StaticRouter
+
+order:
+<Router>
+<Routes>
+<Route>
+
+
+Link:
+when we want to connect particular component with the router 
+importan attribute which is used for connecting the component with the path.
+
+
+home,shop,contact,stationary
+
+
+rcc
+rfce
+rconst
+
+================================================================================
+child route ,HOCcomponent, forms, Axioms
+
+Hoc:
+    it is a function
+    it will take another component as input and return modified component as output with some aditional features
+    So to reuse the code we will use this hoc concept
+
+
+
+request to the client is made by Axios -> which follow promise
+axios method:
+    then and cathch method
+
+npm install axios -g 
+npm install axios
+
+
+axios.get(url).then(()=>()).catch()
+================================================================================
+forms 
+    controlled forms -> in this react itself take the value
+                        
+    uncontrolled form -> react give the  control to DOM itself.
+
+
+databse;
+1. npm install json-server 
+2. verify the package.json
+3. json-server -p 9000 --watch db.json
+
+================================================================================
+May - 3 - 2021
+npm -i cors
+
+Redux:
+    userform -> {
+        state {
+            emailid:
+            password:
+            mobilno:
+            username:
+        }
+    }
+
+<userform/> ......<App/>
+<poduct/>.........<App>
+
+no we have to call the username value in product component [ie) to share the state variables across all component without lifting
+                                                                , so we go for reduct concepts]
+
+
+
+
+                                                         App                          store[username]
+                                                          |
+                                                 ---------------------         
+                                                userform          product
+                                                state[
+                                                    username:
+                                                ]
+
+
+In this we not maintain variables in state insted we will strore the values in STORE Memory.
+
+
+
+Redux: is a pattern library for managing and updating application state using events called "actions".
+        It serves as a centralized "store" for state for state that need to be used across the applicaiton.
+
+
+Why?  
+
+When? 
+
+
+3 principles of Redux.
+
+    single sorce of truth. -> single store.
+    The state is read-only  -> only with an action we can change the state values.
+    changes are made with pure function -> corresponding handelers are called reducers [ie) simple js functions]
+                                            [actions and current state are the two parameters of reducers]
+
+
+
+key concepts of reudx:
+
+store -> actions -> reducers [state and action] -> subscribe [the components that need to be aware of state changes can "subscribe" to the store.]
+
+
+
+How to connect react with Redux
+
+1. provider -> store is available to the components only with the help of providers.
+
+2. connect -> connect is a function which will create container components to be used.
+
+
+store  -> is immutable
+action
+reducer[state and actions]
+dispatch
+provider
+connect 
+
+steps:
+
+create store
+        create a app called reduxdemo
+        npm install redux react-redux
+        create a store.js 
+
+actions
+        acions -> courseAction.js
+
+to create reducere
+        reducers -> courseReducers.js
+
+Multiple reducers -> to combine all the reducer
+        rootReducer.js
+
+
+now createa new component as coourseAction.js
+==============================================================
+May 4 2022
+uncontrolled form:
+         if the form is going to have more than 20 fields -> so we will give the conrolls to Dom itself [ie) we will use ref keyword]
+
+
+
+==============================================================
+May 5 2022
+Introduction to flux
+
+        It is easy when compared to redux.
+        Flus is also aproduct of Facebook
+        unidirectional pattern
+        React can be combined with fluex which gives a wa;y to handle data inside the app and changes to data happesn in an effective manner.
+        fllux is easy to understand and provides minumum code.
+
+
+Basic principles of flux ()
+ store    -> actions invoke changes -> dispatcher
+
+1. It will maintain more than one store when compared with redux
+2. only one dispatcher when compared with redux.
+3. It is the singlleton pattern
+
+                dispatcher
+                    |
+                   payload
+                    |
+                   state
+
+
+action -> dispatcher->store->ReactView
+^                                |
+|                                |
+|--------------------------------|
+
+installing flux.
+npm install flux --save --legacy-peer-deps
+
+Entere the Author name:
+button-create Author
+
+
+==============================================================
+May-6 -2022
+
+create-react-app -> testing facilities also availabel in this.
+
+types of testing
+    1. unit testing
+    2. Snapshot/UI testing  ---> front end testing
+JEST -> 
+1. javascript library for creating,running and structuring your testing , and it is created by FB.
+2. easy setup
+3. fast-instant feedback.(It is bascically works with typescript)
+
+
+step 1:
+1. npm init -y
+2. in package.json on the script, just change the value "echo \"Error: no test specified\" && exit 1 => "jest"
+3. npm install --save-dev jest
+3.npm test
+4. exect(actual).matcher(expected)
+5. few matches is "toBe", "toEqual etc...
+        toBe -> check the test case with objects.js
+        toEqual -> test the value for equality
+        toBeNull
+        toBeUndefined
+        toBeTruthy
+        toBeFalsy
+        toContain
+        toError([Errorobj])
+
+
+user data --> database 
+
+all test case --before/after
+each test cases -- before/after
+
+beforeEacf(()=>console.log("I will execute before each test functions"))

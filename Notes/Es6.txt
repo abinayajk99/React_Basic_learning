@@ -1,0 +1,144 @@
+jsbin.com -> editor to work for javascript
+=============================================================================================================================================================
+Let and Cont:
+ var->let  variable values
+    ->const constant values.
+=============================================================================================================================================================
+
+Arrow functions:
+ function myfunc (){
+
+ }
+
+
+ const myfunc = () => {}
+
+
+ =============================================================================================================================================================
+ Exports and imports (Module):
+
+ person.js:
+    const person = () => {
+        name:"name"
+    }
+
+    export defaul person
+
+
+utily.js:
+    export const clean = () =>{};
+    export const baseData = 10;
+
+
+when we are importing above files in app.js,
+    1. default export -> we can exporting it in any name we want
+    2. const export -> we should export only with this name mentioned with {}, braces over it.
+(see eg: on below file name)
+
+app.js:
+'
+import person from '.person.js'
+import per from '.person.js'   
+
+import {baseData} form './utily.js'
+import {clean as cln} form './utily.js'
+import * as bundled from './utily.js'  -> then we can user with bundled.baseData etc..
+
+
+
+=============================================================================================================================================================
+
+classes  properties and method.
+
+propertied are variable,attached to classes or objects.
+ES6                                     Es7
+
+constructor(){
+    this.myProperty = 'value            myProperty = 'value'
+}
+
+.....) were we don't use constructor to initialize the variables.
+
+
+Methods are like function attached to calsses/objects.
+ES6                              Es7
+myMethod(){                     myMethod = () => {}
+    .....
+}
+
+when we use the arrow function we don't have problem with the "this" keyword.
+=============================================================================================================================================================
+
+Spread & Rest Operator, Destructuring:
+
+
+spread operator -> used to split up array element Or object Properties
+        eg: const newArray = [ ...oldArray,1,2 ]
+        const newArray = { ...oldObjects, newProp:5 }
+
+
+        const person = {'name': 'Max' };
+        const newPerson = {
+            ...person,age : 28
+        }
+
+        o/p: [obj,obj] = {age:28,name:'Max'}
+
+Rest Operator -> used to merge a list of function arguments into an array.
+        eg: function sosrArgs(...ags){
+            result args.sort()
+        }
+
+
+        const filter = (...args) => {
+            return args.filter( el => el=== 1);
+        }
+        console.log(filter(1,2,3));
+
+        o/p: [1]
+
+Destructuring:[eg preparing sandwich from freazer] 
+
+    -> Easily extract array elements or objects properties and stor them in variables.
+
+    eg: Array Destructuring:
+        [a,b] = ['HEllo',"MAx"] 
+        console.log(a)  //HEllo
+        console.log(b)  //MAx
+
+
+        object Destructuring:
+        {name} = {name:"Max",age:28}
+        console.log(name) //Max
+        console.log(age)  //undefined
+
+
+        cosnst numbers = [1,2,3];
+        [num1,,num2] = numbsers;
+        console.og(num1,num2)   o/p: 1,3
+
+=============================================================================================================================================================
+
+Reference and premitive type:
+
+copy the value and place it in another array or variables, will change both the values , ie we r just pointing one pointer to both the variables/functions.
+
+
+eg: const person = {name;"Max"}
+    const secondPerson = person;
+    person.name = 'manu'
+    console.log(secondPerson);     o/p: [obj,obj]{name:"Manu"}
+
+
+to copy exactly the value not the pointer will use the spread operator over it.
+
+eg: const person = {name;"Max"}
+    const secondPerson = {...person};
+    person.name = 'manu'
+    console.log(secondPerson);     o/p: [obj,obj]{name:"Manu"}
+
+
+=============================================================================================================================================================
+
+Refreshing Arrays:
+

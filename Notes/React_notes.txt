@@ -1,0 +1,504 @@
+What is React?
+    Open source library for building user interfaces
+    Not a framework
+    Focus on UI
+    Rich ecosystem
+
+
+Why learn React?
+    Created and maintained by Facebook
+    More than 100k starts on Github
+    Huge community
+    In demand skillset
+
+React is declarative
+    Tell React what you want and React will build the actual UI
+    React will handle efficiently updating and rendering of the components
+    DOM updates are handles gracefully in React.
+
+More on why React?
+    Seamlessly integrate react into any of your applications.
+    Portion of your page or a complete page or even an entire application itself.
+    React native for mobile applications
+
+
+Prerequisites
+    HTML, CSS and JavaScript fundamentals
+    ES6
+    JavaScript – 'this' keyword, filter, map and reduce
+    ES6 – let & const, arrow functions, template literals, default parameters, object literals, rest and
+    spread operators and destructuring assignment.
+    React from scratch
+
+
+Channel content - React
+    Fundamentals
+    HTTP
+    Routing
+    Redux
+    Utilities
+
+Create-react-app
+npx                                             npm
+npx create-react-app <project_name>             npm install create-react-app -g
+npm package runner                              create-react-app<project_name>
+==========================================================================================================================================================
+                                                    Folder Structure:
+node modules-> contails all modules over it.
+public -> index.html which is the base for all files to be rendered
+src -> main folder as the dev working in this
+        index.html -> index.js -> app.js
+
+
+=============================================================================================================================================================
+
+                                                    Components:
+Components describe a part of the user interface
+They are re-usable and can be nested inside other components
+Two Types -
+o Stateless Functional Components
+• Stateful Class Components
+
+Component Types:
+1. Stateless Functional Component
+        .) JavaScript Functions
+        
+        function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;}
+
+2. Stateful Class Component
+        .)Class extending Component class
+        .)Render method returning HTML
+        class Welcome extends React.Component {
+            render () {
+            return <h1>Hello, {this.props.name}</h1>;
+            }
+        }
+
+
+Functional Components
+Properties(props) -> JavaScript Function -> HTML (JSX)
+
+Class Components
+Properties(props) -> ES6 class (State) -> HTML (JSX)
+
+
+Functional vs Class components
+Functional                                                      Class
+    Simple functions                                            More feature rich
+    Use Func components as much as possible                     Maintain their own private data - state        
+    Absence of 'this' keyword                                   Complex UI logic
+    Solution without using state                                stateful/ Smart/ Container
+    Mainly responsible for the UI                               Provide lifecycle hooks
+    Stateless/ Dumb/ Presentational
+
+
+Нooks
+No breaking changes.
+Completely opt-in & 100% backwards-compatible.
+What ever we've learned so far in this series still holds good.
+Component types - Functional components and Class components.
+Using state, lifecycle methods and 'this' binding.
+After understanding state, event binding and lifecycle hooks in class components.
+
+
+=============================================================================================================================================================
+
+JSX 
+
+JSX
+JavaScript XML (JSX) – Extension to the JavaScript language syntax.
+Write XML-like code for elements and components.
+JSX tags have a tag name, attributes, and children.
+JSX is not a necessity to write React applications.
+JSX makes your react code simpler and elegant.
+JSX ultimately transpiles to pure JavaScript which is understood by the browsers.
+
+
+
+JSX differences
+Class -> className
+for -> htmlFor
+camelCase property naming convention
+o onclick -> onClick
+o tabindex -> tablndex
+=============================================================================================================================================================
+
+props vs state
+
+
+            props                                                   state
+1.props get passed to the component                     state is managed within the component
+
+2.Function parameters                                   Variables declared in the function body
+
+3.props are immutable                                   state can be changed
+
+4.props – Functional Components                         useState Hook – Functional Components
+this.props – Class Components                            this.state – Class Components
+
+
+
+
+
+setState
+1. Always make use of setState and never modify the state directly.
+2. Code has to be executed after the state has been updated ? Place that code in the call back
+function which is the second argument to the setState method.
+3. When you have to update state based on the previous state value, pass in a function as an
+argument instead of the regular object.
+
+=============================================================================================================================================================
+
+Binding Events :
+1. binding in render
+2. arrow function in render
+3.binding in class constructor (best method)
+4.class properties as arrow function
+
+
+=============================================================================================================================================================
+Conditional Rendering
+
+1. if/else
+2. Element variables
+3. Ternary conditional operator
+4. Short circuit operator
+
+=============================================================================================================================================================
+Styling React Components
+1. CSS stylesheets
+2. Inline styling
+3. CSS Modules
+4. CSS in JS Libaries
+
+=============================================================================================================================================================
+Lists and Keys
+A "key" is a special string attribute you need to include when creating lists of elements.
+Keys give the elements a stable identity.
+Keys help React identify which items have changed, are added, or are removed.
+Help in efficient update of the user interface.
+
+
+Index as key
+When to use index as a key?
+1. The items in your list do not have a unique id.
+2. The list is a static list and will not change.
+3. The list will never be reordered or filtered.
+
+=============================================================================================================================================================
+fragments
+1.<React.Fragemnet key=(item.id)></React.Fragment>
+2.<></>
+
+=============================================================================================================================================================
+
+Pure Components: (It is onlye used for class component to use it for functional components we will use the "memo functions")
+    create parentcomp.js,pureComp.js,RegComp.js files
+    create the state on the parent comp that re-render whent he state is updated.
+
+    Regular Component                                       Pure Component
+    A regular component does not implement the                 A  pure component on the other hand
+    shouldComponentUpdate method. It always                    implements shouldComponentUpdate with
+    returns true by default.                                   a shallow props and state comparison.
+
+
+Shallow comparison (SC):
+
+1. Primitive Types
+a (SC) b returns true if a and b have the same value and are of the same type
+Ex: string 'Vishwas' (SC) string 'Vishwas' returns true
+
+2. Complex Types
+a (SC) b returns true if a and b reference the exact same object.
+
+
+var a = [1,2,3];                    var a ={ x: 1, y: 2 };
+var b = [1,2,3];                    var b ={ x: 1, y: 2 };
+var c = a;                          var c = a;
+
+var ab_eg = (a ===b); // false      var ab_eg = (a ===b); // false
+var ac_eq = (a === c); // true      var ac_eq = (a === c); // true
+
+
+Pure Component
+A pure component implmements shouldComponentUpdate with a shallow prop and state
+comparison.
+
+
+SC of prevState with currentState               ->    Difference?    -> Re-render component
+SC of prevProps with currentProps
+
+
+Summary
+
+We can create a component by extending the PureComponent class.
+
+
+A PureComponent implements the shouldComponentUpdate lifecycle method by performing a
+shallow comparison on the props and state of the component.
+
+If there is no difference, the component is not re-rendered – performance boost.
+
+
+It is a good idea to ensure that all the children components are also pure to avoid unexpected
+behaviour.
+
+Never mutate the state. Always return a new object that reflects the new state.
+
+
+MEMO: ( for functional components):
+  create MemoComp.js
+  And use it is parentcomp.js
+
+=============================================================================================================================================================
+LIFE CYCLES METHODS for "Class Components"
+
+
+1. Mounting - When an instance of a component is being created and inserted into the DOM
+2. Updating - When a component is being re-rendered as a result of changes to either its props or state
+3. Unmounting - When a component is being removed from the DOM
+4. Error Handling - When there is an error during rendering, in a lifecycle method, or in the constructor of any child component
+
+
+
+Mounting -> constructor, static getDerivedStateFromProps, render and componentDidMount
+
+updating -> static getDerivedStateFromProps,
+            shouldComponentUpdate,
+            getSnapshotBeforeUpdate 
+            componentDidUpdate
+
+Unmounting -> componentWillUnmount
+
+Error Handling -> static getDerivedStateFromError 
+                 componentDidCatch
+
+
+Mounting Lifecycle Methods:
+1. constructor( props ) -> 1. A special function that will get called whenever a new component is created.
+                           2. Initializing state
+                              Binding the event handlers
+
+                           3. Do not cause side effects. Ex: HTTP requests
+                           4.super(props)
+                             Directly overwrite this.state
+
+2. static getDerivedStateFromProps( props, state) 
+                            1.When the state of the component depends on changes in props over time.
+                            2.Set the state
+                            3.Do not cause side effects. Ex: HTTP requests
+
+3. render ->                1.Only required method
+                            2.Read props & state and return JSX
+                            3.Do not change state or interact with DOM or make ajax calls.
+                            4.Children components lifecycle methods are also executed.
+
+4. componentDidMount ->     1.Invoked immediately after a component and all its children components have been rendered to the DOM.
+                            2.Cause side effects. Ex: Interact with the DOM or perform any ajax calls to load data.
+
+
+
+updating Lifecycle Methods.
+
+1. getDerivedStateFromProps -> 1. Method is called every time a component is re-rendered
+                               2. Set the state
+                               3. Do not cause side effects. Ex: HTTP requests
+
+
+2. shouldComponentUpdate    -> 1. Dictates if the component should re-render or not
+                               2. Performance optimization
+                               3. Do not cause side effects. Ex: HTTP requests Calling the setState method
+
+3. render () ->  1. Only required method
+                 2. Read props & state and return JSX
+                 3. Do not change state or interact with DOM or make ajax calls.   
+
+4. getSnapshotBeforeUpdate(prevProps, prevState)   
+           -> 1.Called right before the changes from the virtual DOM are to be reflected in the DOM
+              2. Capture some information from the DOM
+              3. Method will either return null or return a value.
+                 Returned value will be passed as the third parameter to
+                 the next method.
+
+
+5. componentDidUpdate(prevProps, prevState, snapshot) -> 
+                1. Called after the render is finished in the re-render cycles
+                2. Cause side effects
+
+
+Unmounting Phase Method
+
+1. componentWillUnmount( )
+
+                1. Method is invoked immediately before a component is unmounted and destroyed.
+                2. Cancelling any network requests, removing event handlers, cancelling any subscriptions and also  invalidating timers.
+                3. Do not call the setState method.
+
+Error Handling Phase Methods
+
+1.static getDerivedStateFromError(error)
+2. componentDidCatch(error, info)
+
+        When there is an error either during rendering, in a lifecycle
+        method, or in the constructor of any child component.
+
+
+========================================
+
+Initial Phase
+Mounting Phase
+updating Phase
+Unmounting Phase
+
+Initial phase  -> 1. getDefaulProps()
+                   2. getIniitalPhase()
+
+Mounting Phase -> 1. componentWillMount() -> this func is invoked before the comonent is mounted on the DOM.
+                            ii) this func gets invoked once before the render() function is executed for the first time.
+                            III) in this cases, when you call setState() inside this method , the component will not re-render.
+                   2. ComponentDidMount() -> This function is invoked after the compoennt is mounted on the Dom.
+                            i) this func gets invoked once after the render( ) function is executed for the first time.
+                            ii) Now, you ca do any DoM quering operations.
+
+
+Updating Phase, 
+        updating is the phase where the states and props of a component  are updated followed by some user events such as clicking or pressing button.
+
+            2. ComponenWillUpdate() 
+                            i) componentWillUpdate()
+                                        i)This function is invoked before the component is rerendered .
+                                        ii) > This function gets invoked once before the render() function is excecuted after the updation of State or Props.
+                            ii) componentDidUpdate()
+                                        i)Similarly this function is invoked after the component is rerendered.
+                                        ii) This function gets invoked once after the render() function is executed after the updation of State or Props.
+                            iii) redner()
+                            • render() -> It is invoked to examine this.props and this.state and return one of the following types: React elements, Arrays and fragments,
+                            Booleans or null, String and Number.
+                            > If shouldComponentUpdate() returns false, the code inside render() will be invoked again to ensure that the component displays itself properly.
+
+                            iv) shouldComponentUpdate()
+                                > It is invoked when a component decides any changes/updation to the DOM. It allows you to control the component's behavior of updating
+                                itself. If this method returns true, the component will update.
+                                > Otherwise, the component will skip the updating.
+
+            3. Unmounting 
+            componentWillUnmount()
+            > This method is invoked immediately before a component is
+destroyed and unmounted permanently.
+- It performs any necessary cleanup related task such as
+invalidating timers, event listener, canceling network requests,
+or cleaning up DOM elements.
+If a component instance is unmounted, you cannot mount it
+again.
+
+
+=========================================================================================================================
+
+REFS:
+ 
+To access DOM Nodes directly with react.
+
+I) METHOD:
+
+common use cases : focusing a text input .
+
+step1 : create Refs  -> this.inputRef = React.creafRef()
+step2 :  Attach Ref to the input element -> <inpyt type="text" ref={this.inputRef} />
+step3 :  call the focus element on the input element {this.inputRef.current.focus()}
+
+
+next common use case : fetch the input value.
+{this.inputRef.current.value}
+
+II) METHOD:callback refs(older method)
+
+common use cases : focusing a text input .
+
+step1 : create prperty and assig to null this.cbRef =null
+step2: this.setCbRef = element => { this.cbRef = element}
+step3: attach this ref to the input element -> <inpyt type="text" ref={this.setCbRef} />
+step4 : componentDidMount(){
+    if (this.cbRef){
+        this.cbRef.focus()
+    }
+}
+
+REFS with class components:(input.js and FocuInput.js)
+Refs attached only to class component it cnnot be used in functional component
+
+
+Forwarding REf :
+Techniques to automaticallye Forwarding ref  form component to one of its childen.
+eg:files FRInput.js,FRParentInput.js
+
+
+
+
+
+==============================================================================
+Portals:
+1) create new root node under index.js, <div id="portal-root"></div>
+2) new file PortalDemo.js -> rfce
+3) include new file in app componant
+
+
+==============================================================================
+Hooks :
+
+What are Hooks?
+
+Hooks are a new feature addition in React version 16.8 which allow you to use
+React features without having to write a class.
+Ex: State of a component
+Hooks don't work inside classes
+
+
+Reasen 1: 
+
+understandu how "this keyworks works in JavaScript
+Remember to bind event handlers in class component
+classes don't minify very wekk and make hot reloading very unreliable
+
+Reasen 2:
+There is no pariticular way to reuse stateful component logic
+HOC and render props patterns do address this problem.
+Makes the code harder to followed
+there is need a to share stateful logic in a better way
+
+
+Reasen 3:
+Create components for complex scenarios such as data fetching ans subscrbing to events
+Releated code is not organized in  one place.
+
+eg: Data fetcing -> in ComponentDidMount and componentDidUpdate
+eg: Event listiners - in componentDidMount and componentWillUnmount
+Because of stateful logic - cannot break compoennt into smaller ones.
+
+
+
+
+
+Rules of Hooks
+"Only Call Hooks at the Top Level“
+            Don't call Hooks inside loops, conditions, or nested functions
+"Only Call Hooks from React Functions"
+            Call them from within React functional components and not just any regular
+JavaScript function
+
+
+
+Summary - useState
+1) The useState hook lets you add state to functional components
+2) In classes, the state is always an object.
+3) With the useState hook, the state doesn't have to be an object.
+4) The useState hook returns an array with 2 elements.
+5)The first element is the current value of the state, and the second element is a state setter
+function.
+6)New state value depends on the previous state value? You can pass a function to the setter
+function.
+7)When dealing with objects or arrays, always make sure to spread your state variable and then
+call the setter function
+
+
+USEEFFECT Hookes -> useEffect 

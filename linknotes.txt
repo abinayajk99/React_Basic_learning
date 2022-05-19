@@ -1,0 +1,3 @@
+https://www.w3schools.com/css/tryit.asp?filename=trycss_navbar_horizontal_black
+
+https://jsonplaceholder.typicode.com/  ->json placeholder
