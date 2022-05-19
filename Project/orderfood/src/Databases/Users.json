@@ -1,0 +1,16 @@
+[
+    {
+      "username":"john",
+      "email": "abc@gmail.com",
+      "pswd": "Aspire@123",
+      "loggedIn": true,
+      "id": 1
+    },
+    {
+      "username":"racky",
+      "email": "123@gmail.com",
+      "pswd": "Aspire@123",
+      "id": 2,
+      "loggedIn": true
+    }
+  ]
