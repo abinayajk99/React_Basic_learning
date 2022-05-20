@@ -17,21 +17,18 @@ function HomeProduct() {
     const [apiData,setApiData] = useState([]);
 
     //Redux state 
-    const products = useSelector((state)=>state.shop)
-    console.log("no->>>",products);
+    const products = useSelector((state)=>state)
     const dispatch = useDispatch();
 
 
     useEffect(()=>{
         axios.get("http://localhost:7000/products")
         .then((getData)=>{
-            dispatch(SetProduct(getData.data))
             setApiData(getData.data)
+            dispatch(SetProduct(getData.data))
         })
         .catch()
     },[])
-
-    console.log(products)
 
   return (
       <>

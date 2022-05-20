@@ -6,10 +6,10 @@ export const SetProduct = (product) =>{
         payload:product
     }
 }
-export const addToCart = (ItemID) =>{
+export const addToCart = (Item) =>{
     return{
         type:actionTypes.ADD_TO_CART,
-        payload:{id:ItemID}
+        payload:{item:Item}
     }
 }
 export const removeFromCart = (ItemID) =>{

@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { Container,Row,Col,Navbar,Card,Button,Form,FormControl } from 'react-bootstrap'
+import { useSelector,useDispatch } from 'react-redux'
+import { addToCart, SetProduct } from '../../Redux/Shopping/Shopping_actions';
 
 function ProductList(items) {
+    const products = useSelector((state)=>state)
+    const dispatch = useDispatch();
   return (
     <React.Fragment>
                 <Row className='mt-3' >
@@ -17,7 +21,8 @@ function ProductList(items) {
                                     <Card.Body>
                                         <Card.Title>{item.itemName}</Card.Title>
                                         <Card.Text>${item.price}</Card.Text>
-                                        <Button variant="outline-warning">Add to cart</Button>
+                                        <Card.Text>id:{item.id}</Card.Text>
+                                        <Button variant="outline-warning" onClick={()=>dispatch(addToCart(item))}>Add to cart</Button>
                                     </Card.Body>
                                     </Col>
                                     </Row>
