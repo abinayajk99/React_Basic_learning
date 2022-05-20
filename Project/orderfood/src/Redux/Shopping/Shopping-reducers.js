@@ -18,7 +18,10 @@ const ShopReducer = (state = Initial_State,action) =>{
 
             }
         case actionTypes.REMOVE_FROM_CART:
-            return {}   
+            // const removeitem = state.cart.find((prod) =>prod.id === action.payload.id)
+            const data = {...state,cart:state.cart.filter((item) => item.id !== action.payload.id)}
+            console.log(data)
+            return {...state,cart:state.cart.filter((item) => item.id !== action.payload.id)}   
         case actionTypes.ADJUST_QUALITY:
             return {}
         case actionTypes.LOAD_CURRENT_DATA:
