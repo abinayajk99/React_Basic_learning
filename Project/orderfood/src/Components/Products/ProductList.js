@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container,Row,Col,Navbar,Card,Button,Form,FormControl } from 'react-bootstrap'
 import { useSelector,useDispatch } from 'react-redux'
 import { addToCart, SetProduct } from '../../Redux/Shopping/Shopping_actions';
 
 function ProductList(items) {
-    const products = useSelector((state)=>state)
+    const cart = useSelector((state)=>state.shop.cart)
     const dispatch = useDispatch();
+    const [adddedCart,setAddedCart] = useState(false);
+
   return (
     <React.Fragment>
                 <Row className='mt-3' >
@@ -22,7 +24,7 @@ function ProductList(items) {
                                         <Card.Title>{item.itemName}</Card.Title>
                                         <Card.Text>${item.price}</Card.Text>
                                         <Card.Text>id:{item.id}</Card.Text>
-                                        <Button variant="outline-warning" onClick={()=>dispatch(addToCart(item))}>Add to cart</Button>
+                                    <Button variant="outline-warning" onClick={()=>dispatch(addToCart(item))}>Add to cart</Button>  
                                     </Card.Body>
                                     </Col>
                                     </Row>

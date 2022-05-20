@@ -6,6 +6,7 @@ import Login from './Components/Authentication/Login';
 import Register from './Components/Authentication/Register'
 import SubNav from './Components/NavBars/SubNav';
 import HomeProduct from './Components/Products/HomeProduct';
+import CartPage from './Components/Products/CartPage';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/about" element={<h1>404 page not found</h1>}></Route>
           <Route path="/login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
+          <Route path="/cart" element={<CartPage/>}></Route>
         </Routes>
         
       </Router>
