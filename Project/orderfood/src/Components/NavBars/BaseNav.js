@@ -9,10 +9,15 @@ function BaseNav({cart}) {
     const [cartCount,setCartCount] = useState(0);
     useEffect(()=>{
       let count = 0;
+      if (cart.length === []){
+        setCartCount(count)
+      }
+      else{
       cart.forEach(item => {
         count+=item.quantity;
         setCartCount(count)
       });
+      }
     },[cart,cartCount])
     return (
         <>

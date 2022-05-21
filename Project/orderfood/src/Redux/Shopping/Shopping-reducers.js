@@ -18,12 +18,20 @@ const ShopReducer = (state = Initial_State,action) =>{
 
             }
         case actionTypes.REMOVE_FROM_CART:
-            // const removeitem = state.cart.find((prod) =>prod.id === action.payload.id)
             const data = {...state,cart:state.cart.filter((item) => item.id !== action.payload.id)}
             console.log(data)
             return {...state,cart:state.cart.filter((item) => item.id !== action.payload.id)}   
-        case actionTypes.ADJUST_QUALITY:
-            return {}
+        
+        case actionTypes.ADD_ADJUST_QUALITY:
+            const incartitem = state.cart.find((prod) => prod.id === action.payload.item.id)
+            return {...state,cart:state.cart.map((incartitem) => incartitem.id === action.payload.item.id? {...incartitem,quantity:incartitem.quantity+1}:incartitem)}
+        
+        case actionTypes.Dec_ADJUST_QUALITY:
+            const incartDecItem = state.cart.find((prod) => prod.id === action.payload.item.id)
+            return {...state,cart:incartDecItem.quantity === 0 ?
+                state.cart.filter((incartDecItem) => incartDecItem.id !== action.payload.item.id)
+                :state.cart.map((incartDecItem) => incartDecItem.id === action.payload.item.id? {...incartDecItem,quantity:incartDecItem.quantity-1}:incartDecItem)}
+    
         case actionTypes.LOAD_CURRENT_DATA:
             return {}
         default:

@@ -19,12 +19,20 @@ export const removeFromCart = (ItemID) =>{
     }
 }
 
-export const adjustQuality = (ItemID,Value) => {
+export const addadjustQuality = (Item) => {
     return{
-        type:actionTypes.ADJUST_QUALITY,
+        type:actionTypes.ADD_ADJUST_QUALITY,
         payload:{
-            id:ItemID,
-            qty:Value
+            item:Item,
+        }
+    }
+}
+
+export const decadjustQuality = (Item) => {
+    return{
+        type:actionTypes.Dec_ADJUST_QUALITY,
+        payload:{
+            item:Item,
         }
     }
 }

@@ -4,12 +4,20 @@ import SubNav from '../NavBars/SubNav';
 import {Table,Container,Row,Col,Image,Figure,Card,ListGroup,ListGroupItem,Button,ButtonGroup} from 'react-bootstrap'
 import ImageName from '/home/user/repository/React_Basic_learning/Project/orderfood/src/Components/Products/foodmitho.jpg'
 import { connect } from 'react-redux'
-import { removeFromCart } from '../../Redux/Shopping/Shopping_actions';
+import { addadjustQuality, removeFromCart,decadjustQuality } from '../../Redux/Shopping/Shopping_actions';
 
 
-function CartPage({cart,removeFromCart}) {
+function CartPage({cart,removeFromCart,addadjustQuality,decadjustQuality}) {
     const totalValue = (item,price) =>{
         return item*price
+    }
+    const totalAmount =(cart) =>{
+        var total =0;
+        cart.map((item) =>{
+            total=item.quantity*item.price
+            return total
+        })
+
     }
   return (
     <div>
@@ -40,9 +48,9 @@ function CartPage({cart,removeFromCart}) {
                         <th>{item.quantity}</th>
                         <td>
                         <ButtonGroup aria-label="Basic example">
-                            <Button variant="warning">-</Button>
+                            <Button variant="warning" onClick={()=>{decadjustQuality(item)}}>-</Button>
                             <Button variant="danger" onClick={()=>removeFromCart(item.id)}>Remove</Button>
-                            <Button variant="success">+</Button>
+                            <Button variant="success" onClick={()=>addadjustQuality(item)}>+</Button>
                         </ButtonGroup>
                         </td>
                         <td>{totalValue(item.price,item.quantity)}</td>
@@ -51,6 +59,7 @@ function CartPage({cart,removeFromCart}) {
                     ))}
                 </tbody>
                 </Table>
+                Amount to be paid in total:{totalAmount(cart)}
             </Col>
         </Row>
     </Container>
@@ -66,7 +75,9 @@ const mapStateToProps =  (state,dispatch) =>{
 
 const mapDispatchToProps = (dispatch) =>{
     return{
-        removeFromCart : (id) => dispatch(removeFromCart(id))
+        removeFromCart : (id) => dispatch(removeFromCart(id)),
+        addadjustQuality : (item) => dispatch(addadjustQuality(item)),
+        decadjustQuality : (item) => dispatch(decadjustQuality(item)),
     }
 }
 
