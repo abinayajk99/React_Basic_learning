@@ -9,7 +9,8 @@ export default class userRegistration extends Component {
   
     this.state = {
        fields:{},
-       errors:{}
+       errors:{},
+       isRegister:false,
     }
     this.ChangeFields = this.ChangeFields.bind(this);
     this.submitUserForm = this.submitUserForm.bind(this);
@@ -37,7 +38,8 @@ export default class userRegistration extends Component {
             this.setState({
               fields:fields
             })
-          alert("Form Submitted");
+          // alert("Form Submitted");
+          this.setState(isRegister=false);
 
           }
         )
@@ -110,36 +112,59 @@ export default class userRegistration extends Component {
   }
   render() {
     return (
-      <div className='Container mt-4'>
-        <h4>CreateAccount</h4>
-        <form method='post' action="#" name="userRegistration" onSubmit={this.submitUserForm}> 
-        <div>
-          <label>UserName : </label> &nbsp; &nbsp;
-          <input type="text" name="username" value={this.state.fields.username} onChange={this.ChangeFields} placeholder="Enter the username"/>
-        </div><br/>
-        <div className='error'>{this.state.errors.username}</div>
-        <div>
-          <label>Email : </label> &nbsp; &nbsp;
-          <input type="email" name="email" value={this.state.fields.email} onChange={this.ChangeFields} placeholder="Enter the Email"/>
-        </div><br/>
-        <div className='error'>{this.state.errors.email}</div>
-        <div>
-          <label>PhoneNo : </label> &nbsp; &nbsp;
-          <input type="number" name="phono" value={this.state.fields.phono} onChange={this.ChangeFields} placeholder="Enter the Phono"/>
-        </div><br/>
-        <div className='error'>{this.state.errors.phono}</div>
-        <div>
-          <label>Passaword : </label> &nbsp; &nbsp;
-          <input type="password" name="pswd" value={this.state.fields.pswd} onChange={this.ChangeFields} placeholder="Enter the password"/>
-        </div><br/>
-        <div className='error'>{this.state.errors.pswd}</div>
-        <div>
-          <input type="submit" value="submit"/>
-          <Link to="login"><input type="button" value="Login"/></Link>
+      <div class="container">
+        <div id="form_login_register">
+          <div class="container">
+          <div class="row  justify-content-center mt-5 pb-4"> 
+            <div class="col-sm-8 col-md-4 col-lg-4 ">
+            <div class="card">
+              <div class="card-header">
+                <center>
+                  <h4>Register</h4>
+                </center>
+              </div> 
+              <div class="card-body">
+                
+                    <form method='post' action="#" name="userRegistration" onSubmit={this.submitUserForm}>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username"  name="username" value={this.state.fields.username} onChange={this.ChangeFields} required/> 
+                        <div className='error' color='red'>{this.state.errors.username}</div>
+                      </div>
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                        <input type="email" name="email" value={this.state.fields.email} onChange={this.ChangeFields} class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required/>
+                        <div className='error'>{this.state.errors.email}</div>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                        <input type="number" name="phono" value={this.state.fields.phono} onChange={this.ChangeFields} placeholder="Enter the Phono" required/>
+                        <div className='error'>{this.state.errors.phono}</div>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                        <input type="password" name="pswd" value={this.state.fields.pswd} onChange={this.ChangeFields}  placeholder="Enter the password" required/>
+                        <div className='error'>{this.state.errors.pswd}</div>
+                      </div>
+                
+                      <div align="center"><input type="submit" value="submit"/></div>
+                      <hr></hr>
+                      <div class="container signin">
+                        <p>Already have an account? <Link to="/login" className="btn btn-link">Login</Link>.</p>
+                      </div>
+                      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                    </form>
+                  </div>
+              </div>
+                
+              </div>
+            </div>
+          
+          </div>
         </div>
-        <br/>
-        </form>
-      </div>
+</div>
     )
   }
 }

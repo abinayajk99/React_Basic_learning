@@ -7,18 +7,20 @@ import Register from './Components/Authentication/Register'
 import SubNav from './Components/NavBars/SubNav';
 import HomeProduct from './Components/Products/HomeProduct';
 import CartPage from './Components/Products/CartPage';
+import { useState } from 'react';
 
 
 function App() {
+  const [isLogin, setIsLogin] = useState(false)
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<HomeProduct/>}></Route>
+          <Route path="/" element={<HomeProduct isLogin={isLogin}/>}></Route>
           <Route path="/about" element={<h1>404 page not found</h1>}></Route>
-          <Route path="/login" element={<Login/>}></Route>
-          <Route path="/register" element={<Register/>}></Route>
-          <Route path="/cart" element={<CartPage/>}></Route>
+          <Route path="/login" element={<Login isLogin = {isLogin}  setIsLogin={setIsLogin}/>}></Route>
+          <Route path="/register" element={<Register isLogin={isLogin}/>}></Route>
+          <Route path="/cart" element={<CartPage isLogin={isLogin}/>}></Route>
         </Routes>
         
       </Router>
