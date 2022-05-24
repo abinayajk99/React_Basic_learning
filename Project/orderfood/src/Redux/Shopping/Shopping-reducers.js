@@ -2,7 +2,8 @@ import * as actionTypes from './Shopping_types'
 const Initial_State = {
     products:[],
     cart:[],
-    currentItem:null
+    currentItem:null,
+    isLogin : null,
 }
 
 const ShopReducer = (state = Initial_State,action) =>{
@@ -32,8 +33,9 @@ const ShopReducer = (state = Initial_State,action) =>{
                 state.cart.filter((incartDecItem) => incartDecItem.id !== action.payload.item.id)
                 :state.cart.map((incartDecItem) => incartDecItem.id === action.payload.item.id? {...incartDecItem,quantity:incartDecItem.quantity-1}:incartDecItem)}
     
-        case actionTypes.LOAD_CURRENT_DATA:
-            return {}
+        case actionTypes.IS_LOGIN:
+            console.log("islogin..........",action.payload.item)
+            return {...state,isLogin:action.payload.item}
         default:
             return state
     }

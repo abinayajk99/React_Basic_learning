@@ -44,3 +44,10 @@ export const loadCurrentData = (Item) =>{
     }
 
 }
+
+export const isLogin = (Item) => {
+    return {
+        type:actionTypes.IS_LOGIN,
+        payload:{item:Item}
+    }
+}

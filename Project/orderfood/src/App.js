@@ -11,16 +11,15 @@ import { useState } from 'react';
 
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false)
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<HomeProduct isLogin={isLogin}/>}></Route>
+          <Route path="/" element={<HomeProduct />}></Route>
           <Route path="/about" element={<h1>404 page not found</h1>}></Route>
-          <Route path="/login" element={<Login isLogin = {isLogin}  setIsLogin={setIsLogin}/>}></Route>
-          <Route path="/register" element={<Register isLogin={isLogin}/>}></Route>
-          <Route path="/cart" element={<CartPage isLogin={isLogin}/>}></Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/cart" element={<CartPage/>}></Route>
         </Routes>
         
       </Router>

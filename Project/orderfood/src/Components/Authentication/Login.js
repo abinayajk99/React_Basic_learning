@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 
 import axios from 'axios';
+import { connect } from 'react-redux'
+import { isLogin } from '../../Redux/Shopping/Shopping_actions';
+import HomeProduct from '../Products/HomeProduct';
 
-
-export default class Login extends Component {
+class Login extends Component{
   constructor(props) {
     super(props)
   
@@ -18,14 +20,17 @@ export default class Login extends Component {
   }
   getLogin=(event)=>{
     event.preventDefault();
-    console.log(`in login`,this.state.email,this.state.password)
+    // console.log(`in login`,this.state.email,this.state.password)
     axios.get("http://localhost:7000/users").then(
       (data) => {
+        console.log(data)
         if (data.status === 200){
           data.data.map((item)=>{
-            if(data.username === event.target.username && data.pswd === event.target.password){
-              this.props.setIsLogin(true)
-              console.log(this.props.setIsLogin)
+            console.log(item.email,item.pswd,this.state.email,this.state.password)
+            if(item.email === this.state.email && item.pswd === this.state.password){
+              this.props.isLogin(true);
+              console.log("...............",this.props.login);
+              
             }
           })
         }throw "error"
@@ -34,8 +39,11 @@ export default class Login extends Component {
   
   }
   render() {
+    const isit = this.props.login;
     return (
+      
       <>
+      {isit ? <HomeProduct/>:
       <div className='Container'>
         <div className='row justify-content-center mt-5 pb-4'>
           <div className="col-md-4">
@@ -63,9 +71,25 @@ export default class Login extends Component {
             </div>
           </div>
         </div>  
-      </div>
+      </div>}
       </>
       
     )
   }
 }
+
+const mapStateToProps =  (state) =>{
+  return{
+    login : state.shop.isLogin
+  }
+
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return{
+    isLogin : (itemvalue) => dispatch(isLogin(itemvalue))
+  }
+}
+
+
+export default connect (mapStateToProps,mapDispatchToProps)(Login);

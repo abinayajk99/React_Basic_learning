@@ -5,3 +5,4 @@ export const LOAD_CURRENT_DATA = "LOAD_CURRENT_DATA";
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const ADD_ADJUST_QUALITY = "ADD_ADJUST_QUALITY"
 export const Dec_ADJUST_QUALITY = "Dec_ADJUST_QUALITY"
+export const IS_LOGIN = "IS_LOGIN"

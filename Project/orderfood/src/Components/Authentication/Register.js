@@ -10,7 +10,6 @@ export default class userRegistration extends Component {
     this.state = {
        fields:{},
        errors:{},
-       isRegister:false,
     }
     this.ChangeFields = this.ChangeFields.bind(this);
     this.submitUserForm = this.submitUserForm.bind(this);
@@ -38,8 +37,7 @@ export default class userRegistration extends Component {
             this.setState({
               fields:fields
             })
-          // alert("Form Submitted");
-          this.setState(isRegister=false);
+          alert("Form Submitted");
 
           }
         )
