@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import SideNAv from './SideNAv'
 import { connect } from 'react-redux'
 
-function BaseNav({cart}) {
+function BaseNav({cart,islogin}) {
     const [cartCount,setCartCount] = useState(0);
     useEffect(()=>{
       let count = 0;
@@ -35,10 +35,18 @@ function BaseNav({cart}) {
             </Navbar.Brand>
           </Container>
           <Nav>
-          <Link to="/cart"><Button variant="dark">Add To Cart <Badge bg="warning" text="dark">{cartCount}</Badge></Button></Link>
+            {islogin?
+              <Link to="/cart"><Button variant="dark">Add To Cart <Badge bg="warning" text="dark">{cartCount}</Badge></Button></Link>
+            : false }
           <SideNAv/>
-        <Link to="login"><Button variant="dark">Login</Button></Link>
-        <Link to="register"><Button variant="dark">Register</Button></Link>
+          {islogin
+          ?<Link to="/logout"><Button variant="dark">Logout</Button></Link>
+          :
+            <>
+              <Link to="login"><Button variant="dark">Login</Button></Link>
+              <Link to="register"><Button variant="dark">Register</Button></Link>
+              </>
+          } 
     </Nav>
         </Navbar>
       </>
@@ -48,7 +56,8 @@ function BaseNav({cart}) {
 
 const mapStateToProps =  state =>{
     return{
-        cart : state.shop.cart
+        cart : state.shop.cart,
+        islogin : state.shop.isLogin,
     }
 }
 

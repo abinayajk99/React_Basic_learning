@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Container,Row,Col,Navbar,Card,Button,Form,FormControl } from 'react-bootstrap'
 import { useSelector,useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { addToCart, SetProduct } from '../../Redux/Shopping/Shopping_actions';
 
 function ProductList(items) {
     const cart = useSelector((state)=>state.shop.cart)
+    const islogin = useSelector((state) =>state.shop.isLogin)
     const dispatch = useDispatch();
     const [adddedCart,setAddedCart] = useState(false);
+    console.log(islogin)
 
   return (
     <React.Fragment>
@@ -24,7 +27,10 @@ function ProductList(items) {
                                         <Card.Title>{item.itemName}</Card.Title>
                                         <Card.Text>${item.price}</Card.Text>
                                         <Card.Text>id:{item.id}</Card.Text>
-                                    <Button variant="outline-warning" onClick={()=>dispatch(addToCart(item))}>Add to cart</Button>  
+                                    {islogin
+                                    ?<Button variant="outline-warning" onClick={()=>dispatch(addToCart(item))}>Add to cart</Button>
+                                    :<Link to="login"><Button variant="outline-warning">Add To Cart</Button></Link>}
+                                      
                                     </Card.Body>
                                     </Col>
                                     </Row>

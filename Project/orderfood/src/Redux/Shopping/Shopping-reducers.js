@@ -3,7 +3,7 @@ const Initial_State = {
     products:[],
     cart:[],
     currentItem:null,
-    isLogin : null,
+    isLogin : false,
 }
 
 const ShopReducer = (state = Initial_State,action) =>{
